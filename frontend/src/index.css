@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #fafaf6;
+  color: #0d2a23;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.font-arabic {
+  font-family: 'Amiri', serif;
+}
+
+@layer base {
+  :root {
+    --background: 60 30% 97%;
+    --foreground: 162 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 162 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 162 47% 11%;
+    --primary: 162 70% 18%;
+    --primary-foreground: 60 30% 97%;
+    --secondary: 160 25% 92%;
+    --secondary-foreground: 162 47% 18%;
+    --muted: 60 15% 94%;
+    --muted-foreground: 162 15% 35%;
+    --accent: 38 45% 60%;
+    --accent-foreground: 162 47% 11%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 60 30% 97%;
+    --border: 160 15% 88%;
+    --input: 160 15% 90%;
+    --ring: 162 70% 25%;
+    --radius: 0.75rem;
+  }
+
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground; }
+
+  /* Custom focus ring */
+  *:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+}
