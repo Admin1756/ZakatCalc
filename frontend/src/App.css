@@ -49,3 +49,12 @@ html { scroll-behavior: smooth; }
   .no-print { display: none !important; }
   body { background: white; }
 }
+
+/* Hide Emergent floating badge as requested by client */
+#emergent-badge,
+a[href*="emergent.sh"][target="_blank"],
+a[aria-label*="Emergent"],
+[class*="emergent-badge"],
+[data-testid*="emergent"] {
+  display: none !important;
+}

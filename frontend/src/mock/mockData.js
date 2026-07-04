@@ -1,8 +1,8 @@
 // Mock data for Zamzam Capital Zakat Calculator
 
 export const CURRENCIES = [
-  { code: 'USD', symbol: '$', name: 'US Dollar' },
   { code: 'INR', symbol: '₹', name: 'Indian Rupee' },
+  { code: 'USD', symbol: '$', name: 'US Dollar' },
   { code: 'GBP', symbol: '£', name: 'British Pound' },
   { code: 'EUR', symbol: '€', name: 'Euro' },
   { code: 'AED', symbol: 'د.إ', name: 'UAE Dirham' },
@@ -13,10 +13,11 @@ export const CURRENCIES = [
   { code: 'IDR', symbol: 'Rp', name: 'Indonesian Rupiah' },
 ];
 
-// Mock live prices per gram in different currencies (24K gold, 999 silver)
+// Static reference (Mumbai EOD) — user can edit prices manually
+// TODO: Wire up to a live gold/silver data feed (e.g. cleartax / goodreturns) once API is chosen.
 export const NISAB_PRICES = {
-  USD: { gold24: 131, silver999: 2.0 },
   INR: { gold24: 10950, silver999: 165 },
+  USD: { gold24: 131, silver999: 2.0 },
   GBP: { gold24: 103, silver999: 1.6 },
   EUR: { gold24: 120, silver999: 1.85 },
   AED: { gold24: 481, silver999: 7.35 },
@@ -54,6 +55,8 @@ export const CATEGORIES = [
   { id: 'professional', icon: 'Stethoscope', title: 'Professional', desc: 'Doctor, lawyer, etc.', tag: 'Personal' },
 ];
 
+export const JEWELLERY_INFO = 'The Hanafi school guidance generally includes all gold and silver jewellery, while the Shafi\'i, Maliki, and Hanbali schools generally exempt jewellery kept strictly for personal use but include investment or stored jewellery.';
+
 export const ASSET_GROUPS = [
   {
     key: 'cash',
@@ -72,6 +75,7 @@ export const ASSET_GROUPS = [
     title: 'Gold',
     icon: 'Coins',
     desc: 'Jewellery, bullion, coins (by karat)',
+    info: JEWELLERY_INFO,
     fields: [
       { id: 'gold_24', label: '24K — grams', purityKey: '24K' },
       { id: 'gold_22', label: '22K — grams', purityKey: '22K' },
@@ -85,6 +89,7 @@ export const ASSET_GROUPS = [
     title: 'Silver',
     icon: 'Coins',
     desc: 'Silver jewellery, bullion, coins',
+    info: JEWELLERY_INFO,
     fields: [
       { id: 'silver_grams', label: 'Silver (999 fine) — grams' },
     ],
@@ -174,7 +179,7 @@ export const SCHOLARLY_RULINGS = {
     { topic: 'Stocks', text: 'Zakat based on company\'s zakatable assets, not full share value.' },
     { topic: 'Business', text: 'Zakat on stock-in-trade valued at acquisition or market depending on intent.' },
   ],
-  Shafi: [
+  "Shafi'i": [
     { topic: 'Jewellery', text: 'Reasonable jewellery worn regularly is exempt; excess is zakatable.' },
     { topic: 'Nisab Standard', text: 'Gold nisab (85g) is the standard reference.' },
     { topic: 'Crypto', text: 'Permissible types are zakatable on full market value at hawl.' },
@@ -197,15 +202,15 @@ export const FAQS = [
   },
   {
     q: 'What is the Nisab — should I use gold or silver?',
-    a: 'Nisab is the minimum threshold. Gold Nisab is 85g of pure gold; Silver Nisab is 595g of pure silver. Most scholars recommend silver Nisab as it is lower, ensuring more is given to the poor. Use gold Nisab if you only own gold and no other zakatable wealth (Hanafi guidance).',
+    a: 'Nisab is the minimum threshold. Gold Nisab is 85g (7.5 tolas) of pure gold; Silver Nisab is 595g (52.5 tolas) of pure silver. Most scholars recommend silver Nisab as it is lower, ensuring more is given to the poor. Use gold Nisab if you only own gold and no other zakatable wealth (Hanafi guidance).',
   },
   {
     q: 'Is Zakat due on cryptocurrency?',
-    a: 'Yes. Most contemporary scholars (including AAOIFI) treat permissible crypto holdings as trade goods or wealth. Zakat is calculated on the market value at the end of your hawl (zakat year).',
+    a: 'Yes. Most contemporary scholars (including AAOIFI) treat permissible crypto holdings as trade goods or wealth. Zakat is calculated on the market value at the end of your hawl (zakat year). It is another matter however, that as per our Shariah Board and the views of all major Shariah scholars, it is impermissible to invest in cryptocurrency.',
   },
   {
     q: 'Is Zakat due on women\'s jewellery?',
-    a: 'The four Sunni schools differ. Hanafi requires Zakat on all gold/silver jewellery exceeding nisab regardless of use. Maliki/Shafi\'i/Hanbali generally exempt jewellery worn regularly for adornment, but zakat is due on excess or stored jewellery.',
+    a: 'The four Sunni schools differ. Hanafi requires Zakat on all gold/silver jewellery exceeding nisab regardless of use. Maliki / Shafi\'i / Hanbali generally exempt jewellery worn regularly for adornment, but zakat is due on excess or stored jewellery.',
   },
   {
     q: 'What about retirement funds (EPF / NPS / 401k)?',
@@ -213,7 +218,7 @@ export const FAQS = [
   },
   {
     q: 'Are stocks and mutual funds zakatable?',
-    a: 'If shares are held for trading: full market value is zakatable. If held for long-term dividend income: only the underlying zakatable assets (cash, receivables, inventory) of the company are zakatable — practically estimated as 25%–40% of market value, depending on the company. Always check Sharia compliance first.',
+    a: 'If shares are held for trading: full market value is zakatable. If held for long-term dividend income: only the underlying zakatable assets (cash, receivables, inventory) of the company are zakatable — practically estimated as 25%–40% of market value, depending on the company. Always check Shariah compliance first.',
   },
   {
     q: 'Does Zamzam Capital store my financial data?',
@@ -223,6 +228,22 @@ export const FAQS = [
     q: 'Can I deduct debts from my Zakat calculation?',
     a: 'Yes — debts and liabilities that are immediately due within the next 12 months (personal loans, bills, taxes, business payables) can be deducted from your zakatable assets. Long-term debt (e.g., home mortgage) is generally not fully deductible — consult a scholar for specifics.',
   },
+  {
+    q: 'Who has to give Zakat?',
+    a: 'Zakat is obligatory on every adult Muslim of sound mind who owns wealth above the Nisab threshold for a full lunar year (hawl). Children and the mentally incapacitated are exempt per the majority view; some schools require guardians to pay on their behalf.',
+  },
+  {
+    q: 'When should I pay my Zakat?',
+    a: 'Zakat becomes due on the completion of one lunar year (hawl) from the date your wealth first exceeded Nisab. Many Muslims pay during Ramadan for the multiplied reward, but any date works — just be consistent year over year.',
+  },
+  {
+    q: 'Who can receive Zakat?',
+    a: 'The Qur\'an (9:60) specifies eight categories: (1) the poor (fuqara), (2) the needy (masakin), (3) Zakat administrators, (4) those whose hearts are inclined to Islam, (5) freeing captives/slaves, (6) those in debt, (7) in the path of Allah (fi sabilillah), (8) the wayfarer (ibn al-sabil).',
+  },
+  {
+    q: 'Can I pay Zakat to family members?',
+    a: 'You can pay Zakat to poor siblings, uncles, aunts, cousins, and further relatives. However, you cannot pay it to your parents, grandparents, spouse, children, or grandchildren — providing for them is a separate obligation.',
+  },
 ];
 
 export const HADITHS = [
@@ -230,16 +251,6 @@ export const HADITHS = [
     arabic: 'وَأَقِيمُوا الصَّلَاةَ وَآتُوا الزَّكَاةَ',
     translation: '“Establish prayer and give Zakat.”',
     source: 'Qur\'an 2:43',
-  },
-  {
-    arabic: 'مَا نَقَصَتْ صَدَقَةٌ مِنْ مَالٍ',
-    translation: '“Charity does not decrease wealth.”',
-    source: 'Sahih Muslim 2588',
-  },
-  {
-    arabic: 'الدِّينُ النَّصِيحَةُ',
-    translation: '“The religion is sincere counsel (nasīḥah).”',
-    source: 'Sahih Muslim 55',
   },
 ];
 
@@ -249,3 +260,6 @@ export const STATS = [
   { value: '10+', label: 'Currencies supported' },
   { value: '100%', label: 'Private · in your browser' },
 ];
+
+export const YT_VIDEO_ID = '7AG6wmheZEA';
+export const YT_VIDEO_URL = 'https://youtu.be/7AG6wmheZEA';

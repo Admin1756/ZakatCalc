@@ -10,19 +10,17 @@ export default function Header() {
   const loc = useLocation();
   const nav = [
     { label: 'Zakat Calculator', href: '/' },
-    { label: 'Faraid', href: '/faraid' },
-    { label: 'Wasiyyah', href: '/wasiyyah' },
     { label: 'About', href: '/about' },
   ];
   return (
-    <header className="sticky top-0 z-40 bg-white/85 backdrop-blur-md border-b border-emerald-900/10">
+    <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-emerald-900/10">
       <div className="max-w-7xl mx-auto px-5 lg:px-8 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2.5 group">
-          <div className="h-10 w-auto flex items-center bg-white rounded-md px-2 py-1 shadow-sm border border-emerald-900/5">
+          <div className="h-10 w-auto flex items-center bg-white rounded-md px-2 py-1">
             <img src={LOGO_URL} alt="Zamzam Capital" className="h-7 w-auto" />
           </div>
           <div className="leading-tight hidden sm:block border-l border-emerald-900/10 pl-3 ml-1">
-            <div className="text-[10px] uppercase tracking-[0.18em] text-amber-700 font-semibold">Zakat Engine</div>
+            <div className="text-[10px] uppercase tracking-[0.18em] text-amber-700 font-semibold">Zakat Calculator</div>
             <div className="text-[11px] text-emerald-900/70">by Zamzam Capital</div>
           </div>
         </Link>

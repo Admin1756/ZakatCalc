@@ -14,7 +14,7 @@ export default function ScholarlyRulings() {
           <div className="text-[10px] uppercase tracking-[0.22em] text-amber-700 font-bold flex items-center gap-2">
             <BookOpen className="w-3.5 h-3.5" /> Scholarly Rulings
           </div>
-          <h2 className="mt-2 text-3xl md:text-4xl font-bold text-emerald-950">Across the four Sunni schools.</h2>
+          <h2 className="mt-2 text-3xl md:text-4xl font-bold text-emerald-950">Across the four Sunni schools <em className="text-emerald-800">(madhabs)</em>.</h2>
           <p className="text-sm text-emerald-900/70 mt-2 max-w-2xl">
             Curated reference points based on classical &amp; contemporary fatawa. Always consult your local scholar for personal rulings.
           </p>

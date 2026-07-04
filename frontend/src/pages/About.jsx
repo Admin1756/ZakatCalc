@@ -4,8 +4,8 @@ import { Shield, Award, Users, BookOpen } from 'lucide-react';
 
 const PILLARS = [
   { icon: Shield, title: 'Private by design', body: 'Your inputs never leave your browser. No accounts, no tracking, no telemetry.' },
-  { icon: Award, title: 'SEBI Registered', body: 'Zamzam Capital is SEBI-registered Research Analyst (INH000016199) for Sharia-compliant investing in India.' },
-  { icon: BookOpen, title: 'Scholar Verified', body: 'Methodology endorsed by leading Indian seminaries — Deoband, Mazahir Uloom, Nadwatul Ulama, Imarat Sharia.' },
+  { icon: Award, title: 'SEBI Registered', body: 'Zamzam Capital is SEBI-registered Research Analyst (INH000016199) for Shariah-compliant investing in India.' },
+  { icon: BookOpen, title: 'Scholar Verified', body: 'Methodology endorsed by leading Indian seminaries — Deoband, Mazahir Uloom, Nadwatul Ulama, Imarat Shariah.' },
   { icon: Users, title: 'Free forever', body: 'Made for the ummah — no paywalls, no upsells. Use it, share it, print it for your masjid.' },
 ];
 
@@ -18,7 +18,7 @@ export default function AboutPage() {
           <div className="text-[10px] uppercase tracking-[0.22em] text-amber-700 font-bold">About</div>
           <h1 className="mt-3 text-4xl md:text-5xl font-bold text-emerald-950 leading-tight">A free, scholar-verified Islamic estate toolkit by Zamzam Capital.</h1>
           <p className="mt-6 text-lg text-emerald-900/75 max-w-3xl leading-relaxed">
-            Zamzam Capital is India&apos;s pioneering SEBI-registered Sharia-compliant research analyst. We built this Zakat,
+            Zamzam Capital is India&apos;s pioneering SEBI-registered Shariah-compliant research analyst. We built this Zakat,
             Faraid &amp; Wasiyyah toolkit so every Muslim — employee, business owner, student, retiree — can fulfill the
             third pillar of Islam with clarity and confidence.
           </p>
@@ -42,12 +42,12 @@ export default function AboutPage() {
           <div className="text-[10px] uppercase tracking-[0.22em] text-amber-700 font-bold">Methodology</div>
           <h2 className="mt-3 text-3xl md:text-4xl font-bold text-emerald-950">Anchored in the methodology of Mufti Taqi Usmani (DB).</h2>
           <p className="mt-5 text-emerald-900/75 leading-relaxed">
-            Our Sharia screening framework follows the criteria developed by one of the foremost contemporary Islamic
+            Our Shariah screening framework follows the criteria developed by one of the foremost contemporary Islamic
             scholars, formally endorsed by Darul Uloom Deoband, Mazahir Uloom (Saharanpur), Darul Uloom Nadwatul Ulama
-            (Lucknow) and Imarat Sharia (Patna). The same scholarly rigor underpins this Zakat toolkit.
+            (Lucknow) and Imarat Shariah (Patna). The same scholarly rigor underpins this Zakat toolkit.
           </p>
           <div className="mt-6 inline-flex items-center gap-2 px-3 py-2 rounded-full bg-emerald-900 text-amber-100 text-xs">
-            All activities certified by the Sharia Board of Infinity Consultants.
+            All activities certified by the Shariah Board of Infinity Consultants.
           </div>
         </section>
       </main>

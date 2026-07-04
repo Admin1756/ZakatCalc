@@ -11,12 +11,12 @@ export default function MissionSection() {
               Helping Indian Muslims plan their wealth ethically — across the lifecycle.
             </h2>
             <p className="mt-5 text-emerald-900/75 text-base leading-relaxed">
-              Built by Zamzam Capital, India&apos;s SEBI-registered Sharia-compliant research analyst. One private,
+              Built by Zamzam Capital, India&apos;s SEBI-registered Shariah-compliant research analyst. One private,
               scholar-verified toolkit for <strong>Zakat</strong>, <strong>Faraid</strong> and <strong>Wasiyyah</strong>.
               No accounts. No tracking. Free forever.
             </p>
             <div className="mt-6 inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-emerald-900/10 text-xs text-emerald-900">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" /> Endorsed by the Sharia Board of Infinity Consultants
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" /> Endorsed by the Shariah Board of Infinity Consultants
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">

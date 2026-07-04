@@ -31,12 +31,12 @@ export function computeAssetValue(groupKey, values, prices) {
   return group.fields.reduce((sum, f) => sum + parseFloat(values[f.id] || 0), 0);
 }
 
-export function computeTotals(values, currency) {
-  const prices = NISAB_PRICES[currency] || NISAB_PRICES.USD;
+export function computeTotals(values, currency, prices, standard = 'silver') {
+  const p = prices || NISAB_PRICES[currency] || NISAB_PRICES.USD;
   const breakdown = {};
   let totalAssets = 0;
   ASSET_GROUPS.forEach((g) => {
-    const v = computeAssetValue(g.key, values, prices);
+    const v = computeAssetValue(g.key, values, p);
     breakdown[g.key] = v;
     totalAssets += v;
   });
@@ -45,8 +45,9 @@ export function computeTotals(values, currency) {
     0
   );
   const netWealth = Math.max(totalAssets - totalLiabilities, 0);
-  const { goldNisab, silverNisab } = getNisabValues(currency, prices);
-  const nisabRef = Math.min(goldNisab, silverNisab); // silver typically lower
+  const goldNisab = p.gold24 * GOLD_NISAB_GRAMS;
+  const silverNisab = p.silver999 * SILVER_NISAB_GRAMS;
+  const nisabRef = standard === 'gold' ? goldNisab : silverNisab;
   const meetsNisab = netWealth >= nisabRef;
   const zakatDue = meetsNisab ? netWealth * ZAKAT_RATE : 0;
   return {
@@ -57,6 +58,7 @@ export function computeTotals(values, currency) {
     goldNisab,
     silverNisab,
     nisabRef,
+    standard,
     meetsNisab,
     zakatDue,
   };

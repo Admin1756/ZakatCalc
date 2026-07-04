@@ -37,7 +37,7 @@ export default function WasiyyahWriter() {
           <div className="w-10 h-10 rounded-lg bg-amber-200 text-emerald-900 flex items-center justify-center"><ScrollText className="w-5 h-5" /></div>
           <div className="text-[10px] uppercase tracking-[0.22em] text-amber-700 font-bold">Wasiyyah Writer · Educational</div>
         </div>
-        <h1 className="text-3xl md:text-4xl font-bold text-emerald-950">Sharia-aligned Will Writer</h1>
+        <h1 className="text-3xl md:text-4xl font-bold text-emerald-950">Shariah-aligned Will Writer</h1>
         <p className="mt-3 text-emerald-900/70 max-w-2xl text-sm leading-relaxed">
           Compose your <em>Wasiyyah</em> within the classical 1/3 cap. Print, sign in front of two witnesses, and store securely.
         </p>
@@ -80,7 +80,7 @@ export default function WasiyyahWriter() {
             </Button>
             {overCap && (
               <div className="mt-4 rounded-lg bg-rose-50 border border-rose-200 p-3 text-xs text-rose-800 flex gap-2">
-                <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" /> Bequests exceed the 1/3 cap permitted by Sharia. Reduce or seek heir consent.
+                <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" /> Bequests exceed the 1/3 cap permitted by Shariah. Reduce or seek heir consent.
               </div>
             )}
           </div>

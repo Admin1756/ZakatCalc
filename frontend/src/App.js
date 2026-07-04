@@ -1,9 +1,7 @@
 import { useEffect } from 'react';
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
-import FaraidPage from './pages/FaraidCalculator';
-import WasiyyahPage from './pages/WasiyyahWriter';
 import AboutPage from './pages/About';
 import { Toaster } from './components/ui/sonner';
 
@@ -16,9 +14,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/faraid" element={<FaraidPage />} />
-          <Route path="/wasiyyah" element={<WasiyyahPage />} />
           <Route path="/about" element={<AboutPage />} />
+          {/* Faraid & Wasiyyah moved to a separate app (Zamzam Capital Inheritance & Will Calculator) */}
+          <Route path="/faraid" element={<Navigate to="/" replace />} />
+          <Route path="/wasiyyah" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
       <Toaster position="top-center" richColors />

@@ -7,9 +7,9 @@ export default function FAQSection() {
     <section id="faq" className="max-w-4xl mx-auto px-5 lg:px-8 py-20">
       <div className="text-center mb-10">
         <div className="text-[10px] uppercase tracking-[0.22em] text-amber-700 font-bold inline-flex items-center gap-2">
-          <HelpCircle className="w-3.5 h-3.5" /> Frequently Asked
+          <HelpCircle className="w-3.5 h-3.5" /> Frequently Asked Questions
         </div>
-        <h2 className="mt-3 text-3xl md:text-4xl font-bold text-emerald-950">Zakat — answered.</h2>
+        <h2 className="mt-3 text-3xl md:text-4xl font-bold text-emerald-950">Zakat Queries — answered.</h2>
         <p className="text-sm text-emerald-900/70 mt-3 max-w-xl mx-auto">
           Short answers with the underlying scholarly reasoning. Always cross-check with your local scholar.
         </p>
