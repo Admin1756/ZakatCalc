@@ -4,7 +4,8 @@ import { Button } from './ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip';
 import { ASSET_GROUPS, LIABILITY_FIELDS } from '../mock/mockData';
 import { computeTotals, formatMoney } from '../lib/calc';
-import { CheckCircle2, Printer, RotateCcw, Sparkles, Info } from 'lucide-react';
+import { generateZakatPdf } from '../lib/generatePdf';
+import { CheckCircle2, Download, RotateCcw, Sparkles, Info } from 'lucide-react';
 import { toast } from 'sonner';
 
 const STEP_LABELS = ['Assets', 'Liabilities', 'Result'];
@@ -17,8 +18,13 @@ export default function ZakatCalculator({ currency, prices, standard }) {
 
   const reset = () => { setValues({}); setStep(0); };
   const exportPdf = () => {
-    toast.success('Opening print dialog — use “Save as PDF” to download.');
-    setTimeout(() => window.print(), 300);
+    try {
+      generateZakatPdf({ values, totals, currency, standard });
+      toast.success('PDF downloaded');
+    } catch (e) {
+      console.error(e);
+      toast.error('PDF generation failed — please try again.');
+    }
   };
 
   return (
@@ -190,7 +196,7 @@ export default function ZakatCalculator({ currency, prices, standard }) {
               </Button>
               {step === 2 && (
                 <Button variant="outline" size="sm" onClick={exportPdf} className="border-emerald-900/15">
-                  <Printer className="w-3.5 h-3.5 mr-1.5" /> Print / PDF
+                  <Download className="w-3.5 h-3.5 mr-1.5" /> Download PDF
                 </Button>
               )}
             </div>
