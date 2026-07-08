@@ -131,12 +131,12 @@ export default function NisabTracker({ currency, setCurrency, prices, setPrices,
         <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Gold */}
           <div className={`bg-white rounded-xl border p-5 transition-colors ${standard === 'gold' ? 'border-amber-400 ring-2 ring-amber-200/60' : 'border-amber-200/60'}`}>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-9 h-9 rounded-lg bg-amber-100 flex items-center justify-center">
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2 min-w-0">
+                <div className="w-9 h-9 rounded-lg bg-amber-100 flex items-center justify-center shrink-0">
                   <Coins className="w-4 h-4 text-amber-700" />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <div className="text-sm font-semibold text-emerald-950">Gold Nisab</div>
                   <div className="text-[11px] text-emerald-900/60">{GOLD_NISAB_GRAMS}g · 7.5 tolas · 24K</div>
                 </div>
@@ -144,14 +144,14 @@ export default function NisabTracker({ currency, setCurrency, prices, setPrices,
               {editing ? (
                 <input
                   type="number"
-                  value={p.gold24}
-                  onChange={(e) => setPrices({ ...p, gold24: parseFloat(e.target.value) || 0 })}
-                  className="w-24 text-right text-sm border border-amber-200 rounded-md px-2 py-1"
+                  value={Math.round((p.gold24 * 10) * 100) / 100}
+                  onChange={(e) => setPrices({ ...p, gold24: (parseFloat(e.target.value) || 0) / 10 })}
+                  className="w-28 text-right text-sm border border-amber-200 rounded-md px-2 py-1"
                 />
               ) : (
-                <div className="text-right">
-                  <div className="text-[11px] text-emerald-900/60">per gram</div>
-                  <div className="text-sm font-semibold text-emerald-900">{formatMoney(p.gold24, currency)}</div>
+                <div className="text-right shrink-0">
+                  <div className="text-[11px] text-emerald-900/60">per 10 grams</div>
+                  <div className="text-sm font-semibold text-emerald-900">{formatMoney(p.gold24 * 10, currency)}</div>
                 </div>
               )}
             </div>
@@ -163,12 +163,12 @@ export default function NisabTracker({ currency, setCurrency, prices, setPrices,
 
           {/* Silver */}
           <div className={`bg-white rounded-xl border p-5 transition-colors ${standard === 'silver' ? 'border-emerald-600 ring-2 ring-emerald-200/60' : 'border-slate-200'}`}>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-9 h-9 rounded-lg bg-slate-100 flex items-center justify-center">
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2 min-w-0">
+                <div className="w-9 h-9 rounded-lg bg-slate-100 flex items-center justify-center shrink-0">
                   <Coins className="w-4 h-4 text-slate-500" />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <div className="text-sm font-semibold text-emerald-950">Silver Nisab</div>
                   <div className="text-[11px] text-emerald-900/60">{SILVER_NISAB_GRAMS}g · 52.5 tolas · 999</div>
                 </div>
@@ -177,14 +177,14 @@ export default function NisabTracker({ currency, setCurrency, prices, setPrices,
                 <input
                   type="number"
                   step="0.01"
-                  value={p.silver999}
-                  onChange={(e) => setPrices({ ...p, silver999: parseFloat(e.target.value) || 0 })}
-                  className="w-24 text-right text-sm border border-slate-200 rounded-md px-2 py-1"
+                  value={Math.round((p.silver999 * 10) * 100) / 100}
+                  onChange={(e) => setPrices({ ...p, silver999: (parseFloat(e.target.value) || 0) / 10 })}
+                  className="w-28 text-right text-sm border border-slate-200 rounded-md px-2 py-1"
                 />
               ) : (
-                <div className="text-right">
-                  <div className="text-[11px] text-emerald-900/60">per gram</div>
-                  <div className="text-sm font-semibold text-emerald-900">{formatMoney(p.silver999, currency)}</div>
+                <div className="text-right shrink-0">
+                  <div className="text-[11px] text-emerald-900/60">per 10 grams</div>
+                  <div className="text-sm font-semibold text-emerald-900">{formatMoney(p.silver999 * 10, currency)}</div>
                 </div>
               )}
             </div>

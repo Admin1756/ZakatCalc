@@ -42,8 +42,8 @@ export const NISAB_PRICES = {
 };
 
 // India retail premium applied on LBMA spot for INR display
-// (import duty ~12% + GST ~3% + typical retail premium). Users can override via "Edit prices".
-export const INR_RETAIL_MARKUP = { gold: 1.147, silver: 1.305 };
+// (import duty ~12% + GST ~3% + retail premium + jewellery making). Users can override via "Edit prices".
+export const INR_RETAIL_MARKUP = { gold: 1.175, silver: 1.35 };
 
 export const GOLD_NISAB_GRAMS = 85;
 export const SILVER_NISAB_GRAMS = 595;

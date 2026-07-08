@@ -5,7 +5,7 @@ const CHANNELS = [
     icon: MessageCircle,
     label: 'WhatsApp',
     tag: 'Chat with us directly',
-    href: 'https://wa.me/8694010200',
+    href: 'https://api.whatsapp.com/send/?phone=8694010200&text&type=phone_number&app_absent=0',
     accent: 'from-emerald-600 to-emerald-500',
   },
   {
@@ -19,7 +19,7 @@ const CHANNELS = [
     icon: Instagram,
     label: 'Instagram',
     tag: 'Follow our updates',
-    href: 'https://instagram.com/zamzamcapital',
+    href: 'https://www.instagram.com/zamzamcapital',
     accent: 'from-pink-600 to-fuchsia-500',
   },
   {
