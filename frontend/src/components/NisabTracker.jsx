@@ -62,7 +62,7 @@ export default function NisabTracker({ currency, setCurrency, prices, setPrices,
               {isLive || isCached ? (
                 <>
                   <Radio className="w-3 h-3 text-emerald-700" />
-                  Live spot prices via gold-api.com &amp; open.er-api.com
+                  Live spot &amp; FX rates
                   {live?.updatedAt && <span className="text-emerald-900/45">· updated {timeAgo(live.updatedAt)}</span>}
                 </>
               ) : (
@@ -106,7 +106,7 @@ export default function NisabTracker({ currency, setCurrency, prices, setPrices,
               </TooltipTrigger>
               <TooltipContent side="top" className="max-w-xs text-xs bg-emerald-950 text-white border-emerald-950">
                 Silver Nisab (595g / 52.5 tolas) is the lower threshold and is preferred by most contemporary scholars — ensuring more Muslims are eligible to give.
-                Gold Nisab (85g / 7.5 tolas) may be used if silver is not owned.
+                Gold nisab may be used if only gold and silver jewellery are the zakatable assets for any person.
               </TooltipContent>
             </Tooltip>
           </div>
@@ -199,11 +199,6 @@ export default function NisabTracker({ currency, setCurrency, prices, setPrices,
           <div className="flex items-center gap-1.5">
             <TrendingUp className="w-3.5 h-3.5" /> Zakat rate <span className="font-bold text-emerald-900">2.5%</span> on net wealth above the chosen Nisab
           </div>
-          {(isLive || isCached) && !manual && (
-            <div className="text-[10.5px] text-emerald-900/45">
-              Rates: gold-api.com · exchangerate-api.com (open) — attribution required
-            </div>
-          )}
         </div>
       </div>
     </TooltipProvider>

@@ -8,7 +8,8 @@ export default function Footer() {
           for educational purposes only and should not be construed as legal, financial or religious advice. While every effort
           has been made to ensure the accuracy of the calculations and the underlying Shariah methodology, users are strongly
           encouraged to consult a qualified scholar for guidance on their personal circumstances. Prices and exchange rates
-          shown are indicative reference values — always verify with your local market before finalising your Zakat.
+          shown are indicative reference values — always verify with your local market before finalising your Zakat. Live rates
+          aggregated from public market data feeds; attribution available on request.
         </p>
       </div>
 

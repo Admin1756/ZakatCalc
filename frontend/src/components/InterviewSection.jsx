@@ -44,12 +44,12 @@ export default function InterviewSection() {
             </a>
           </div>
 
-          <div className="relative bg-black/30 min-h-[280px] lg:min-h-[420px]">
+          <div className="relative bg-black/60 min-h-[280px] lg:min-h-[420px] flex items-center justify-center p-4 lg:p-6">
             {playing ? (
               <iframe
                 title="Zakat Interview — Saif Ahmed"
                 src={`https://www.youtube.com/embed/${YT_VIDEO_ID}?autoplay=1&rel=0`}
-                className="absolute inset-0 w-full h-full"
+                className="absolute inset-4 lg:inset-6 w-[calc(100%-2rem)] lg:w-[calc(100%-3rem)] h-[calc(100%-2rem)] lg:h-[calc(100%-3rem)] rounded-xl"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -58,16 +58,16 @@ export default function InterviewSection() {
               <button
                 type="button"
                 onClick={() => setPlaying(true)}
-                className="absolute inset-0 w-full h-full group"
+                className="relative w-full h-full max-h-[380px] rounded-xl overflow-hidden group shadow-2xl"
                 aria-label="Play interview"
               >
                 <img
-                  src={`https://i.ytimg.com/vi/${YT_VIDEO_ID}/maxresdefault.jpg`}
+                  src={`https://i.ytimg.com/vi/${YT_VIDEO_ID}/hqdefault.jpg`}
                   alt="Interview thumbnail"
-                  className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
-                  onError={(e) => { e.currentTarget.src = `https://i.ytimg.com/vi/${YT_VIDEO_ID}/hqdefault.jpg`; }}
+                  className="w-full h-full object-contain bg-black"
+                  onError={(e) => { e.currentTarget.src = `https://i.ytimg.com/vi/${YT_VIDEO_ID}/mqdefault.jpg`; }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/60 via-emerald-950/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/50 via-transparent to-transparent" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <span className="w-20 h-20 rounded-full bg-amber-300 text-emerald-950 flex items-center justify-center shadow-2xl transition-transform group-hover:scale-105">
                     <Play className="w-8 h-8 fill-current ml-1" />

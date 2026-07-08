@@ -8,10 +8,19 @@ const LOGO_URL = 'https://customer-assets.emergentagent.com/job_zakat-essentials
 export default function Header() {
   const [open, setOpen] = useState(false);
   const loc = useLocation();
+
+  const scrollTo = (id) => {
+    setOpen(false);
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   const nav = [
-    { label: 'Zakat Calculator', href: '/' },
-    { label: 'About', href: '/about' },
+    { label: 'Zakat Calculator', kind: 'link', href: '/' },
+    { label: 'About', kind: 'scroll', target: 'about' },
+    { label: 'Connect', kind: 'scroll', target: 'connect' },
   ];
+
   return (
     <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-emerald-900/10">
       <div className="max-w-7xl mx-auto px-5 lg:px-8 h-16 flex items-center justify-between">
@@ -26,9 +35,9 @@ export default function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
-          {nav.map((n) => (
+          {nav.map((n) => n.kind === 'link' ? (
             <Link
-              key={n.href}
+              key={n.label}
               to={n.href}
               className={`px-3.5 py-2 rounded-md text-sm font-medium transition-colors ${
                 loc.pathname === n.href ? 'text-emerald-900 bg-emerald-50' : 'text-emerald-900/70 hover:text-emerald-900 hover:bg-emerald-50/60'
@@ -36,6 +45,14 @@ export default function Header() {
             >
               {n.label}
             </Link>
+          ) : (
+            <button
+              key={n.label}
+              onClick={() => scrollTo(n.target)}
+              className="px-3.5 py-2 rounded-md text-sm font-medium text-emerald-900/70 hover:text-emerald-900 hover:bg-emerald-50/60 transition-colors"
+            >
+              {n.label}
+            </button>
           ))}
         </nav>
 
@@ -53,9 +70,9 @@ export default function Header() {
       {open && (
         <div className="md:hidden border-t border-emerald-900/10 bg-white">
           <div className="px-5 py-3 flex flex-col gap-1">
-            {nav.map((n) => (
+            {nav.map((n) => n.kind === 'link' ? (
               <Link
-                key={n.href}
+                key={n.label}
                 to={n.href}
                 onClick={() => setOpen(false)}
                 className={`px-3 py-2.5 rounded-md text-sm ${
@@ -64,6 +81,14 @@ export default function Header() {
               >
                 {n.label}
               </Link>
+            ) : (
+              <button
+                key={n.label}
+                onClick={() => scrollTo(n.target)}
+                className="text-left px-3 py-2.5 rounded-md text-sm text-emerald-900/80"
+              >
+                {n.label}
+              </button>
             ))}
           </div>
         </div>

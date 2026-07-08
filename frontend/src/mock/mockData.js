@@ -7,26 +7,43 @@ export const CURRENCIES = [
   { code: 'EUR', symbol: '€', name: 'Euro' },
   { code: 'AED', symbol: 'د.إ', name: 'UAE Dirham' },
   { code: 'SAR', symbol: '﷼', name: 'Saudi Riyal' },
+  { code: 'QAR', symbol: 'QR', name: 'Qatari Riyal' },
+  { code: 'KWD', symbol: 'KD', name: 'Kuwaiti Dinar' },
+  { code: 'BHD', symbol: 'BD', name: 'Bahraini Dinar' },
+  { code: 'OMR', symbol: 'RO', name: 'Omani Rial' },
   { code: 'PKR', symbol: '₨', name: 'Pakistani Rupee' },
   { code: 'BDT', symbol: '৳', name: 'Bangladeshi Taka' },
+  { code: 'LKR', symbol: 'Rs', name: 'Sri Lankan Rupee' },
   { code: 'MYR', symbol: 'RM', name: 'Malaysian Ringgit' },
   { code: 'IDR', symbol: 'Rp', name: 'Indonesian Rupiah' },
+  { code: 'TRY', symbol: '₺', name: 'Turkish Lira' },
+  { code: 'RUB', symbol: '₽', name: 'Russian Ruble' },
 ];
 
-// Static reference (Mumbai EOD) — user can edit prices manually
-// TODO: Wire up to a live gold/silver data feed (e.g. cleartax / goodreturns) once API is chosen.
+// Static reference (Mumbai EOD, indicative) — used only as fallback if the live API fails.
 export const NISAB_PRICES = {
-  INR: { gold24: 10950, silver999: 165 },
-  USD: { gold24: 131, silver999: 2.0 },
-  GBP: { gold24: 103, silver999: 1.6 },
-  EUR: { gold24: 120, silver999: 1.85 },
-  AED: { gold24: 481, silver999: 7.35 },
-  SAR: { gold24: 491, silver999: 7.5 },
-  PKR: { gold24: 36500, silver999: 555 },
-  BDT: { gold24: 14300, silver999: 218 },
-  MYR: { gold24: 612, silver999: 9.35 },
-  IDR: { gold24: 2080000, silver999: 31750 },
+  INR: { gold24: 14673, silver999: 250 },
+  USD: { gold24: 154, silver999: 2.6 },
+  GBP: { gold24: 121, silver999: 2.05 },
+  EUR: { gold24: 141, silver999: 2.4 },
+  AED: { gold24: 566, silver999: 9.55 },
+  SAR: { gold24: 578, silver999: 9.75 },
+  QAR: { gold24: 561, silver999: 9.46 },
+  KWD: { gold24: 47.3, silver999: 0.80 },
+  BHD: { gold24: 58.1, silver999: 0.98 },
+  OMR: { gold24: 59.3, silver999: 1.00 },
+  PKR: { gold24: 42900, silver999: 725 },
+  BDT: { gold24: 16800, silver999: 285 },
+  LKR: { gold24: 46200, silver999: 780 },
+  MYR: { gold24: 720, silver999: 12.2 },
+  IDR: { gold24: 2440000, silver999: 41500 },
+  TRY: { gold24: 5400, silver999: 91 },
+  RUB: { gold24: 12100, silver999: 205 },
 };
+
+// India retail premium applied on LBMA spot for INR display
+// (import duty ~12% + GST ~3% + typical retail premium). Users can override via "Edit prices".
+export const INR_RETAIL_MARKUP = { gold: 1.147, silver: 1.305 };
 
 export const GOLD_NISAB_GRAMS = 85;
 export const SILVER_NISAB_GRAMS = 595;
@@ -205,6 +222,22 @@ export const FAQS = [
     a: 'Nisab is the minimum threshold. Gold Nisab is 85g (7.5 tolas) of pure gold; Silver Nisab is 595g (52.5 tolas) of pure silver. Most scholars recommend silver Nisab as it is lower, ensuring more is given to the poor. Use gold Nisab if you only own gold and no other zakatable wealth (Hanafi guidance).',
   },
   {
+    q: 'Who has to give Zakat?',
+    a: 'Zakat is obligatory on every adult Muslim of sound mind who owns wealth above the Nisab threshold for a full lunar year (hawl). Children and the mentally incapacitated are exempt per the majority view; some schools require guardians to pay on their behalf.',
+  },
+  {
+    q: 'When should I pay my Zakat?',
+    a: 'Zakat becomes due on the completion of one lunar year (hawl) from the date your wealth first exceeded Nisab. Many Muslims pay during Ramadan for the multiplied reward, but any date works — just be consistent year over year.',
+  },
+  {
+    q: 'Who can receive Zakat?',
+    a: 'The Qur\'an (9:60) specifies eight categories: (1) the poor (fuqara), (2) the needy (masakin), (3) Zakat administrators, (4) those whose hearts are inclined to Islam, (5) freeing captives/slaves, (6) those in debt, (7) in the path of Allah (fi sabilillah), (8) the wayfarer (ibn al-sabil).',
+  },
+  {
+    q: 'Can I pay Zakat to family members?',
+    a: 'You can pay Zakat to poor siblings, uncles, aunts, cousins, and further relatives. However, you cannot pay it to your parents, grandparents, spouse, children, or grandchildren — providing for them is a separate obligation.',
+  },
+  {
     q: 'Is Zakat due on cryptocurrency?',
     a: 'Yes. Most contemporary scholars (including AAOIFI) treat permissible crypto holdings as trade goods or wealth. Zakat is calculated on the market value at the end of your hawl (zakat year). It is another matter however, that as per our Shariah Board and the views of all major Shariah scholars, it is impermissible to invest in cryptocurrency.',
   },
@@ -227,22 +260,6 @@ export const FAQS = [
   {
     q: 'Can I deduct debts from my Zakat calculation?',
     a: 'Yes — debts and liabilities that are immediately due within the next 12 months (personal loans, bills, taxes, business payables) can be deducted from your zakatable assets. Long-term debt (e.g., home mortgage) is generally not fully deductible — consult a scholar for specifics.',
-  },
-  {
-    q: 'Who has to give Zakat?',
-    a: 'Zakat is obligatory on every adult Muslim of sound mind who owns wealth above the Nisab threshold for a full lunar year (hawl). Children and the mentally incapacitated are exempt per the majority view; some schools require guardians to pay on their behalf.',
-  },
-  {
-    q: 'When should I pay my Zakat?',
-    a: 'Zakat becomes due on the completion of one lunar year (hawl) from the date your wealth first exceeded Nisab. Many Muslims pay during Ramadan for the multiplied reward, but any date works — just be consistent year over year.',
-  },
-  {
-    q: 'Who can receive Zakat?',
-    a: 'The Qur\'an (9:60) specifies eight categories: (1) the poor (fuqara), (2) the needy (masakin), (3) Zakat administrators, (4) those whose hearts are inclined to Islam, (5) freeing captives/slaves, (6) those in debt, (7) in the path of Allah (fi sabilillah), (8) the wayfarer (ibn al-sabil).',
-  },
-  {
-    q: 'Can I pay Zakat to family members?',
-    a: 'You can pay Zakat to poor siblings, uncles, aunts, cousins, and further relatives. However, you cannot pay it to your parents, grandparents, spouse, children, or grandchildren — providing for them is a separate obligation.',
   },
 ];
 

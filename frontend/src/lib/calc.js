@@ -65,7 +65,12 @@ export function computeTotals(values, currency, prices, standard = 'silver') {
 }
 
 export function formatMoney(amount, currency) {
-  const symMap = { USD: '$', INR: '₹', GBP: '£', EUR: '€', AED: 'د.إ ', SAR: '﷼', PKR: '₨', BDT: '৳', MYR: 'RM ', IDR: 'Rp ' };
+  const symMap = {
+    USD: '$', INR: '₹', GBP: '£', EUR: '€', AED: 'د.إ ', SAR: '﷼',
+    QAR: 'QR ', KWD: 'KD ', BHD: 'BD ', OMR: 'RO ',
+    PKR: '₨', BDT: '৳', LKR: 'Rs ', MYR: 'RM ', IDR: 'Rp ',
+    TRY: '₺', RUB: '₽',
+  };
   const sym = symMap[currency] || '';
   const n = Number(amount || 0);
   return `${sym}${n.toLocaleString(undefined, { maximumFractionDigits: 2 })}`;
