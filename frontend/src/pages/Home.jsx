@@ -4,7 +4,6 @@ import Footer from '../components/Footer';
 import HeroSection from '../components/HeroSection';
 import NisabTracker from '../components/NisabTracker';
 import ZakatCalculator from '../components/ZakatCalculator';
-import ScholarlyRulings from '../components/ScholarlyRulings';
 import FAQSection from '../components/FAQSection';
 import InterviewSection from '../components/InterviewSection';
 import HighlightBanner from '../components/HighlightBanner';
@@ -55,7 +54,6 @@ export default function Home() {
           <ZakatCalculator currency={currency} prices={prices} standard={standard} />
         </section>
 
-        <ScholarlyRulings />
         <FAQSection />
         <InterviewSection />
         <HighlightBanner />

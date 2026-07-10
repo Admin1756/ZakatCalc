@@ -146,15 +146,6 @@ export const ASSET_GROUPS = [
     ],
   },
   {
-    key: 'crypto',
-    title: 'Cryptocurrency',
-    icon: 'Bitcoin',
-    desc: 'Digital assets at market value',
-    fields: [
-      { id: 'crypto_value', label: 'Total crypto holdings (market value)' },
-    ],
-  },
-  {
     key: 'retirement',
     title: 'Retirement',
     icon: 'Armchair',

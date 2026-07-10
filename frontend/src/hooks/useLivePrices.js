@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { NISAB_PRICES, INR_RETAIL_MARKUP } from '../mock/mockData';
+import { NISAB_PRICES } from '../mock/mockData';
 
 const TROY_OZ_TO_GRAM = 31.1034768;
 
@@ -104,13 +104,9 @@ export default function useLivePrices() {
           pricesByCurrency[code] = NISAB_PRICES[code];
           return;
         }
-        let goldPerGram = goldUsdGram * rate;
-        let silverPerGram = silverUsdGram * rate;
-        // India retail premium (import duty + GST + retail markup)
-        if (code === 'INR') {
-          goldPerGram *= INR_RETAIL_MARKUP.gold;
-          silverPerGram *= INR_RETAIL_MARKUP.silver;
-        }
+        // Pure LBMA spot × FX for every currency (no retail markup — users can override via "Edit prices")
+        const goldPerGram = goldUsdGram * rate;
+        const silverPerGram = silverUsdGram * rate;
         pricesByCurrency[code] = {
           gold24: Math.round(goldPerGram * 100) / 100,
           silver999: Math.round(silverPerGram * 1000) / 1000,

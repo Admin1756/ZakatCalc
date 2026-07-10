@@ -106,7 +106,7 @@ export default function NisabTracker({ currency, setCurrency, prices, setPrices,
               </TooltipTrigger>
               <TooltipContent side="top" className="max-w-xs text-xs bg-emerald-950 text-white border-emerald-950">
                 Silver Nisab (595g / 52.5 tolas) is the lower threshold and is preferred by most contemporary scholars — ensuring more Muslims are eligible to give.
-                Gold nisab may be used if only gold and silver jewellery are the zakatable assets for any person.
+                Gold nisab may be used if the only zakatable assets are gold and gold jewellery.
               </TooltipContent>
             </Tooltip>
           </div>
@@ -126,6 +126,13 @@ export default function NisabTracker({ currency, setCurrency, prices, setPrices,
               </button>
             ))}
           </div>
+        </div>
+
+        <div className="mt-3 flex items-start gap-2 rounded-lg bg-amber-50/70 border border-amber-200/60 px-3 py-2 text-[11.5px] text-amber-900 leading-snug">
+          <Info className="w-3.5 h-3.5 mt-0.5 text-amber-700 shrink-0" />
+          <span>
+            <strong className="font-semibold">Tip:</strong> It&apos;s beneficial if you enter the gold &amp; silver prices manually for maximum accuracy — use the local retail rate you see in your bazaar/bank via the <em>Edit prices</em> button above.
+          </span>
         </div>
 
         <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">

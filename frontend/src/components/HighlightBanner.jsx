@@ -11,10 +11,7 @@ export default function HighlightBanner() {
           </div>
           <div className="flex-1">
             <p className="text-lg md:text-xl lg:text-2xl font-bold leading-snug text-white">
-              Zakat purifies wealth, strengthens the ummah, and secures Allah’s blessing on every rupee you earn. Calculate it right — give it on time.
-            </p>
-            <p className="mt-3 text-sm md:text-base text-amber-100/85 italic">
-              Placeholder line — replace with the exact copy you’d like highlighted here.
+              For any further clarifications or more details on Zakat calculations, kindly contact your local Mufti / Imam.
             </p>
           </div>
         </div>
