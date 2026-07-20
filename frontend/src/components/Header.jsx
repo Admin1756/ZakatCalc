@@ -24,7 +24,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-emerald-900/10">
       <div className="max-w-7xl mx-auto px-5 lg:px-8 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2.5 group">
+        <Link to="https://zamzam-capital.com/" className="flex items-center gap-2.5 group">
           <div className="h-10 w-auto flex items-center bg-white rounded-md px-2 py-1">
             <img src={LOGO_URL} alt="Zamzam Capital" className="h-7 w-auto" />
           </div>
